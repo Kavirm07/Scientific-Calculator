@@ -74,12 +74,26 @@ public class MultiCharacterOperatorCalculator {
                 return Math.tan(Math.toRadians(num1));
             case "log":
                 return Math.log10(num1);
+            case "!":
+                return factorial((int) num1);
+   
             default:
                 System.out.println("Error: Invalid operator");
                 System.exit(0);
         }
         return 0; // This line should not be reached
     }
+        private static double factorial(int num) {
+            if (num == 0 || num == 1) {
+                return 1;
+            } else {
+                double result = 1;
+                for (int i = 2; i <= num; i++) {
+                    result *= i;
+                }
+                return result;
+            }
+        }
 
     private static void printResult(String operator, double num1, double num2, double result) {
         if (operator.equals("%")) {
@@ -88,8 +102,13 @@ public class MultiCharacterOperatorCalculator {
             System.out.println("Result: sqrt(" + num1 + ") = " + result);
         } else if (operator.equals("pow")) {
             System.out.println("Result: " + num1 + " ^ " + num2 + " = " + Math.round(result));
-        } else {
+        } 
+        else if (operator.equals("!")) {
+        System.out.println("Result: " + (int) num1 + "! = " + (int) result);
+        }
+        else {
             System.out.println("Result: " + num1 + " " + operator + " " + num2 + " = " + result);
         }
     }
+    
 }
